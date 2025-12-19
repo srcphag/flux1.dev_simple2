@@ -9,211 +9,113 @@
           "sampler_name": "ddim",
           "scheduler": "normal",
           "denoise": 1,
-          "model": [
-            "63",
-            0
-          ],
-          "positive": [
-            "26",
-            0
-          ],
-          "negative": [
-            "7",
-            0
-          ],
-          "latent_image": [
-            "66",
-            0
-          ]
+          "model": ["63", 0],
+          "positive": ["26", 0],
+          "negative": ["7", 0],
+          "latent_image": ["66", 0]
         },
-        "class_type": "KSampler",
-        "_meta": {
-          "title": "KSampler"
-        }
+        "class_type": "KSampler"
       },
       "7": {
         "inputs": {
           "text": "drawing, painting, non realistic, rust, dirt",
-          "clip": [
-            "63",
-            1
-          ]
+          "clip": ["63", 1]
         },
-        "class_type": "CLIPTextEncode",
-        "_meta": {
-          "title": "CLIP Text Encode (Negative Prompt)"
-        }
+        "class_type": "CLIPTextEncode"
       },
       "8": {
         "inputs": {
-          "samples": [
-            "3",
-            0
-          ],
-          "vae": [
-            "32",
-            0
-          ]
+          "samples": ["3", 0],
+          "vae": ["32", 0]
         },
-        "class_type": "VAEDecode",
-        "_meta": {
-          "title": "VAEDecode"
-        }
+        "class_type": "VAEDecode"
       },
       "23": {
         "inputs": {
-          "text": [
-            "72",
-            0
-          ],
-          "clip": [
-            "63",
-            1
-          ]
+          "text": ["72", 0],
+          "clip": ["63", 1]
         },
-        "class_type": "CLIPTextEncode",
-        "_meta": {
-          "title": "CLIP Text Encode (Positive Prompt)"
-        }
+        "class_type": "CLIPTextEncode"
       },
       "26": {
         "inputs": {
-          "value": 1,
-          "conditioning": [
-            "23",
-            0
-          ]
+          "guidance": 1,
+          "conditioning": ["23", 0]
         },
-        "class_type": "FluxGuidance",
-        "_meta": {
-          "title": "FluxGuidance"
-        }
+        "class_type": "FluxGuidance"
       },
       "31": {
         "inputs": {
-          "filename": "FLUX1\\flux1-dev-fp8.safetensors"
+          "unet_name": "flux1-dev-fp8.safetensors",
+          "weight_dtype": "default"
         },
-        "class_type": "UNETLoader",
-        "_meta": {
-          "title": "UNETLoader"
-        }
+        "class_type": "UNETLoader"
       },
       "32": {
         "inputs": {
-          "filename": "FLUX1\\diffusion_pytorch_model.safetensors"
+          "vae_name": "diffusion_pytorch_model.safetensors"
         },
-        "class_type": "VAELoader",
-        "_meta": {
-          "title": "VAELoader"
-        }
+        "class_type": "VAELoader"
       },
       "34": {
         "inputs": {
-          "filename": "clip_l.safetensors"
+          "clip_name1": "clip_l.safetensors",
+          "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+          "type": "flux"
         },
-        "class_type": "DualCLIPLoader",
-        "_meta": {
-          "title": "DualCLIPLoader"
-        }
+        "class_type": "DualCLIPLoader"
       },
       "41": {
         "inputs": {
           "filename_prefix": "ComfyUI",
-          "images": [
-            "54",
-            0
-          ]
+          "images": ["8", 0]
         },
-        "class_type": "SaveImage",
-        "_meta": {
-          "title": "SaveImage"
-        }
-      },
-      "54": {
-        "inputs": {
-          "upscale_model": [
-            "55",
-            0
-          ],
-          "image": [
-            "8",
-            0
-          ]
-        },
-        "class_type": "ImageUpscaleWithModel",
-        "_meta": {
-          "title": "ImageUpscaleWithModel"
-        }
-      },
-      "55": {
-        "inputs": {
-          "model_name": "4xNomos2_hq_drct-l.pth"
-        },
-        "class_type": "UpscaleModelLoader",
-        "_meta": {
-          "title": "UpscaleModelLoader"
-        }
+        "class_type": "SaveImage"
       },
       "63": {
         "inputs": {
-          "filename": "Flux\\amateurphoto-v6-forcu.safetensors",
-          "model": [
-            "31",
-            0
-          ],
-          "clip": [
-            "34",
-            0
-          ]
+          "lora_01": "amateurphoto-v6-forcu.safetensors",
+          "strength_01": 1.0,
+          "lora_02": "ScomberScombrus.safetensors",
+          "strength_02": 1.0,
+          "lora_03": "None",
+          "strength_03": 1.0,
+          "lora_04": "None",
+          "strength_04": 1.0,
+          "model": ["31", 0],
+          "clip": ["34", 0]
         },
-        "class_type": "Lora Loader Stack (rgthree)",
-        "_meta": {
-          "title": "Lora Loader Stack (rgthree)"
-        }
+        "class_type": "Lora Loader Stack (rgthree)"
       },
       "66": {
         "inputs": {
-          "value": 1024
+          "width": 1024,
+          "height": 1024,
+          "batch_size": 1
         },
-        "class_type": "EmptyLatentImage",
-        "_meta": {
-          "title": "EmptyLatentImage"
-        }
+        "class_type": "EmptyLatentImage"
       },
       "70": {
         "inputs": {
-          "text": "a ScomberScombrus fish ",
-          "string_b": [
-            "71",
-            0
-          ]
+          "string_a": "a ScomberScombrus fish ",
+          "string_b": ["71", 0],
+          "delimiter": ""
         },
-        "class_type": "StringConcatenate",
-        "_meta": {
-          "title": "StringConcatenate"
-        }
+        "class_type": "StringConcatenate"
       },
       "71": {
         "inputs": {
-          "filename": "a ScomberScombrus fish over a big white wrap paper in a fish store environment. The paper is located over a green plain chroma key matte background. The lighting and setup suggest this is a fish store space where fishes are cleaned. Cenital Top view camera."
+          "text": "a ScomberScombrus fish over a big white wrap paper in a fish store environment. The paper is located over a green plain chroma key matte background. The lighting and setup suggest this is a fish store space where fishes are cleaned. Cenital Top view camera."
         },
-        "class_type": "Text Multiline",
-        "_meta": {
-          "title": "Text Multiline"
-        }
+        "class_type": "Text Multiline"
       },
       "72": {
         "inputs": {
-          "text": "",
-          "string_a": [
-            "70",
-            0
-          ]
+          "string_a": ["70", 0],
+          "string_b": "",
+          "delimiter": ""
         },
-        "class_type": "StringConcatenate",
-        "_meta": {
-          "title": "StringConcatenate"
-        }
+        "class_type": "StringConcatenate"
       }
     }
   }
