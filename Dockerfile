@@ -15,4 +15,3 @@ RUN comfy model download --url https://huggingface.co/srcphag/Flux1.Dev_Loras/re
 RUN comfy model download --url https://huggingface.co/RippleLinks/Flux_Models/blob/main/4xNomos2_hq_drct-l.pth --relative-path models/upscale_models --filename 4xNomos2_hq_drct-l.pth
 
 # copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
-# COPY input/ /comfyui/input/
